@@ -1,0 +1,20 @@
+1)
+a) Internet does not match their needs in terms of privacy, robustness, topology, identifier space
+b) There are practical, political, technological aspects
+c) overhead from abstraction, overhead from unused features of the real network
+
+2)
+a) network, topology, routing
+b) overlay stack in application layer, TCP/IP stack in network layer, or overlay stack network layer as TCP/IP stack application layer
+c) overlay networks borrow ideas from TCP/IP routing/forwarding
+
+3)
+a) password for the torrent (tracker, scrape, peers), integrity verification
+b) consistency, integrity (filenames to separate copies of the same file)
+c) meta data with updating possibility (trackers, comment, creation date, torrent editor software name)
+
+4)
+a) Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces.
+b) Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces so it could start proving its worthiness. The end game mode is used at the end of the download when the peer is already likely to have lots of rare pieces. Also, when the node is nearly finished it does not need to gain lots of extra capacity for downloading the few pieces it is still missing.
+c) The article states, but does not prove, that the new seed state choke improves performance in the presence of free riders. The problem is that high bandwidth free riders can denial the service of seeds for other nodes, preventing initial dissemination of content.
+
