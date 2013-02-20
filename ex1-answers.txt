@@ -1,20 +1,106 @@
+
+avoid direct quotations
+avoid exessive italics
+avoid background without reasons
+
+no minus points were given for direct quotes, but they were ignored as far as possible.
+
 1)
-a) Internet does not match their needs in terms of privacy, robustness, topology, identifier space
-b) There are practical, political, technological aspects
-c) overhead from abstraction, overhead from unused features of the real network
+a) Some reasons for using overlay networks include different needs regarding privacy, robustness,
+   routing topologies, identifier spaces, mobility or scaling. Solving parts of the problem in
+   an overlay abstracts networking problems so one does not need to deal with them in the
+   application. Overlay networks can also be used to experiment with different Internet designs.
+   Overlays also isolate complex designs from each other, so a bug in one overlay should not in
+   many cases affect the operation of other overlays.
+
+b) There are practical, political and technological reasons why the Internet can not be
+   rapidly changed. Updates need to be carried out incrementally while the system is in
+   operation. Lots of effort has been invested into creating infrastructure that optimise
+   efficiency of existing protocols. Some of the infrastructure would need to be replaced
+   to upgrade the Internet. As Internet is federated, all of the participants would need
+   to agree on the correct upgrades to make before they could be made. Finally supporting
+   multiple different kinds of operation is complex, and agreeing on a simple set of
+   base functionality is easier to carry out in general.
+
+   The upgrade from IPv4 to IPv6 can be seen as an example of an attempt to upgrade the
+   Internet. In 2011 IANA ran out of IPv4 addresses [1]. Still full IPv6 transformation
+   has yet to happen. Tunneling technologies such as Teredo are used to transfer IPv6
+   traffic over is tunneled over the IPv4 network [2]. Thus, it seems we end up
+   building overlay networks even when we originally do not intend to.
+
+   [1] http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml
+   [2] http://www.ietf.org/rfc/rfc4380.txt
+
+c) There are several reasons why native networks can perform better than overlays can.
+
+   The overlay user may not be able to take advantage of all the features provided by
+   the underlay if the overlay abstraction hides those features. For example a wifi
+   network supports broadcasting messages to everyone over radio, but an overlay
+   might hide the functionality, providing only support for unicast communication
+   between the nodes.
+
+   The overlay may also add extra information, such as alternative addressing to the
+   nodes. The addresses need to be stored in message headers, and might not be
+   necessary, as the underlay might already provide a functional addressing scheme.
+
+   The overlay might not understand the topology of the underlay. Thus the same
+   traffic might pass multiple times over the same link in the underlay before
+   it arrives to its destination. The communication from your computer to a friend
+   sitting next to you on a couch might travel to a foreign country and back,
+   as there might not be a connection between your computers in the overlay
+   despite that share the same local area network.
+
+   Using an overlay may have a negative effect on security and privacy as using
+   an overlay may increase the amount of computers that can access your data
+   while it is in transit, and may increase your amount of open connections
+   as well.
+
+   Overlays may be costly to users as they move the requirement for processing
+   power and network bandwidth from the data center towards the end hosts.
+   This may decrease the battery life of the end user mahines.
+
+   Finally, design problems in overlay protocols, may cause them to amplify
+   user actions. Malicious users can harness broken overlay systems to perform
+   Denial of Service attacks.
+
+   Using overlays also adds general complexity. For example networking
+   problems may become harder to debug when parts of the interactions
+   on another level.
 
 2)
-a) network, topology, routing
-b) overlay stack in application layer, TCP/IP stack in network layer, or overlay stack network layer as TCP/IP stack application layer
-c) overlay networks borrow ideas from TCP/IP routing/forwarding
+a) routing, topology, network
+   or
+   network, (routing), security, resource management, services, application
+
+   + some explanation of each layer
+b) 
+
+appliation, transport, internet, link
+overlay stack in application layer, TCP/IP stack in network layer, or overlay stack network layer as TCP/IP stack application layer
+
+in addition adding an extra application layer is ok
+
+c) the "routing algorithms" layer borrows ideas from forwarding service on the internet layer
+   the "overlay networks" layer defines the topology of an overlay network like the link layer does for the Internet
+   the "network protocols" sets limits for the network like the technologies used at link layer does for the Internet
+
+"tcp/ip is an overlay on top of physical network" is it though?
+
+(not valid: layers abstract functionalities from other layers)
 
 3)
-a) password for the torrent (tracker, scrape, peers), integrity verification
+a) password for the torrent (tracker, scrape, peers), integrity verification, sometimes encryption key exchange
+limiting with scrape
 b) consistency, integrity (filenames to separate copies of the same file)
 c) meta data with updating possibility (trackers, comment, creation date, torrent editor software name)
 
 4)
-a) Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces.
+a) Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces. Everyone gets some service. Good behaviour is rewarded, but the trade is not exact.
+
 b) Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces so it could start proving its worthiness. The end game mode is used at the end of the download when the peer is already likely to have lots of rare pieces. Also, when the node is nearly finished it does not need to gain lots of extra capacity for downloading the few pieces it is still missing.
+
 c) The article states, but does not prove, that the new seed state choke improves performance in the presence of free riders. The problem is that high bandwidth free riders can denial the service of seeds for other nodes, preventing initial dissemination of content.
+- increased piece variation, because of the different world views
+- more robustness against node failures
+Might help new nodes get started faster.
 
