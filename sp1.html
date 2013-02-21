@@ -32,15 +32,22 @@ h3 {
 582615: Overlay and P2P Networks, Spring 2013
 </p>
 
-<p>
-avoid direct quotations
-avoid exessive italics
-avoid background without reasons
-
-no minus points were given for direct quotes, but they were ignored as far as possible.
-</p>
 <section>
 <h1>Spoiler Package I</h1>
+
+<p>
+Many course participants were unfamiliar with the rules for doing quotations.
+Therefore, no minus points were given for failure in quotation or failure in pointing out sources.
+However, please check the list of <a href="problems.html">common quotation problems</a>
+to avoid loosing points on other courses. Double check the rules before attempting to do
+scientific publications, such as a master's thesis.
+</p>
+<p>
+Direct quotes were ignored while grading the assignments.
+Thus, a low score for an assignment does not necessarily imply that the answer was incorrect.
+Furthermore, it was possible to get full points regardless of some errors.
+Therefore, a high score does not imply that everything in the answer was correct.
+</p>
 
 <section>
 <h2>Assignment 1, Spoiler</h2>
@@ -294,16 +301,34 @@ description without introducing disruptions to the service.
 <h2>Assignment 4, Spoiler</h2>
 
 <section>
-<h3>c.</h3>
+<h3>a.</h3>
 <p>
-Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces. Everyone gets some service. Good behaviour is rewarded, but the trade is not exact.
+Peers who contribute to efficient operation of the network are rewarded with better service. This is done through choking the connections to the peers that do not contribute and unchoking connections to the peers that provide better service.
+</p>
+<p>
+ Part of the bandwidth is allocated for serving new peers who have yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces. Everyone gets some service. Good behaviour is rewarded, but the amount of traded resources do not match.
 </p>
 </section>
 
 <section>
 <h3>b.</h3>
 <p>
-Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces so it could start proving its worthiness. The end game mode is used at the end of the download when the peer is already likely to have lots of rare pieces. Also, when the node is nearly finished it does not need to gain lots of extra capacity for downloading the few pieces it is still missing.
+Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces. It needs some pieces so it can start proving its worthiness to its peers.
+</p>
+<p>
+ The end game mode is used at the end of the download when the peer is already likely to
+ have lots of rare pieces. Thus it already has the means for obtaining better service
+ from its neighbours.
+ Also, when the node is nearly finished it does not need to gain lots of extra capacity for
+ downloading the few pieces it is still missing. So long term investment of retrieving
+ valuable pieces first might not pay of from the nodes perspective, as there is not
+ enough download time left to make use of the better service gained through contributing.
+</p>
+<p>
+By making rare pieces more valuable to its neighbour each peer works towards a common goal of
+distributing the content more evenly. This has the benefit of making it less likely that the
+content would disappear from the network. Better distribution also helps to balance load
+among the participating nodes.
 </p>
 </section>
 
