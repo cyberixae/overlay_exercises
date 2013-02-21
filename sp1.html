@@ -335,10 +335,44 @@ among the participating nodes.
 <section>
 <h3>c.</h3>
 <p>
-The article states, but does not prove, that the new seed state choke improves performance in the presence of free riders. The problem is that high bandwidth free riders can denial the service of seeds for other nodes, preventing initial dissemination of content.
-- increased piece variation, because of the different world views
-- more robustness against node failures
-Might help new nodes get started faster.
+Before the new seed state modification (nssm) the choke algorithm was vulnerable to an attack
+where some high bandwidth free riders would prevent everyone else from getting content.
+The free riders would not need to be malicious, they might simply be free riders
+because of restrictive network environment.
+</p>
+<p>
+Since the seeders do not need to request any pieces, they have no way of telling
+contributing peers from the free riders. Seeders implementing the nssm divide their
+upload time evenly among all interested peers. Thus the distribution can no longer
+be limited to the high bandwidth free riders. As the leechers are able to get some
+pieces, the free riders can only limit the amount of time it takes to push the
+content out to the well behaving community, preventing the attack.
+</p>
+<p>
+Obviously nssm improves performance in cases where leechers are able to get some data
+instead of getting no data at all. Pushing the content out to a larger amount of nodes
+also helps the performance in cases where some nodes disappear from the network.
+When the content is more evenly distributed it does not matter if one of the nodes
+leaves the network, as there are plenty of other nodes ready to step in its place.
+</p>
+<p>
+When the seed communicates with a higher number of nodes, the knowledge about rare
+pieces will become more accurate, which helps to push out the pieces that are rare
+in the network as a whole. In the old model the seed might concentrate on
+pieces that are rare on the fewer peers it has made the decision to serve.
+</p>
+<p>
+As the nssm seeds deliver pieces to large amounts of nodes they may help new peers
+get their first piece faster. Getting first pieces faster could improving the
+rate at which the nodes can enter regular operation.
+</p>
+<p>
+Above we have discussed some aspects of the nssm that are expected to
+<em>improve</em> the performance. To find out how the nssm <em>affects</em> the
+performance, we would additionally need to take into account its negative effects.
+Determining how a given modification affects the performance of a system
+requires doing empirical experiments. Doing such experiments are out of the
+scope of this assignment.
 </p>
 </section>
 </section>
