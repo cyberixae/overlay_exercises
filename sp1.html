@@ -3,13 +3,14 @@
 <head>
 <meta http-equiv="refresh" content="2" />
 <style>
-body
-{
-  margin: 1em 10%;
+body {
+margin: auto 10%;
 }
 section {
+  page-break-inside: avoid;
   border: 0 solid #eee;
 }
+/*
 section section + section {
   border-color: #ddd;
   border-width: 0 0 0 0;
@@ -18,6 +19,7 @@ body > section {
   border-color: #777;
   border-width: medium 0 0 0;
 }
+*/
 p {
   text-align: justify;
 }
@@ -27,16 +29,21 @@ h3 {
 </head>
 <body>
 <p>
+582615: Overlay and P2P Networks, Spring 2013
+</p>
+
+<p>
 avoid direct quotations
 avoid exessive italics
 avoid background without reasons
 
 no minus points were given for direct quotes, but they were ignored as far as possible.
 </p>
+<section>
 <h1>Spoiler Package I</h1>
 
 <section>
-<h2>Assignment 1</h2>
+<h2>Assignment 1, Spoiler</h2>
 
 <section>
 <h3>a.</h3>
@@ -134,7 +141,7 @@ How far this can be taken, remains to be seen.
 </section>
 </section>
 <section>
-<h2>Assignment 2</h2>
+<h2>Assignment 2, Spoiler</h2>
 <section>
 <h3>a.</h3>
 <p>The following stack is presented in the lecture slides.</p>
@@ -225,7 +232,8 @@ The Internet has many properties similar to overlay networks. For example it is 
 </section>
 </section>
 <section>
-<h2>Assignment 3</h2>
+<h2>Assignment 3, Spoiler</h2>
+<section>
 <h3>a.</h3>
 <p>
 The info_hash works as a password for a certain torrent. It can be used to request information about other
@@ -253,6 +261,8 @@ the info_hash [2]. The retrieved info structure can then be verified to match th
 [1] <a href="http://wiki.vuze.com/w/Message_Stream_Encryption">http://wiki.vuze.com/w/Message_Stream_Encryption</a><br />
 [2] <a href="http://bittorrent.org/beps/bep_0009.html">http://bittorrent.org/beps/bep_0009.html</a>
 </p>
+</section>
+<section>
 <h3>b.</h3>
 <p>
 By including some fields in the info structure, the bittorrent developers are saying that those details
@@ -267,6 +277,8 @@ to ensure that everyone gets the exact same file structure. Having multiple swar
 content also improves the systems resilience against attacks, as a malicious user would have to
 attack each swarm separately.
 </p>
+</section>
+<section>
 <h3>c.</h3>
 <p>
 By excluding some fields from the info structure, the bittorrent developers are enabling those
@@ -276,17 +288,35 @@ It is thus possible to add and remove trackers or to do incremental improvements
 description without introducing disruptions to the service.
 </p>
 </section>
+</section>
 
 <section>
-<h2>Assignment 4</h2>
-a) Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces. Everyone gets some service. Good behaviour is rewarded, but the trade is not exact.
+<h2>Assignment 4, Spoiler</h2>
 
-b) Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces so it could start proving its worthiness. The end game mode is used at the end of the download when the peer is already likely to have lots of rare pieces. Also, when the node is nearly finished it does not need to gain lots of extra capacity for downloading the few pieces it is still missing.
+<section>
+<h3>c.</h3>
+<p>
+Peers who contribute to efficient operation of the network are rewarded with better service. Part of the bandwidth is allocated for serving new peers who are yet to prove their worthiness. Worthiness is decided based on the capacity to serve rare pieces. Everyone gets some service. Good behaviour is rewarded, but the trade is not exact.
+</p>
+</section>
 
-c) The article states, but does not prove, that the new seed state choke improves performance in the presence of free riders. The problem is that high bandwidth free riders can denial the service of seeds for other nodes, preventing initial dissemination of content.
+<section>
+<h3>b.</h3>
+<p>
+Most of the time peers strive to prove their worthiness to choke algorithm run by other nodes. Thus the node needs to get access to some rare pieces to improve its position in the game. In the beginning the node is more desperate and is willing to accept any pieces so it could start proving its worthiness. The end game mode is used at the end of the download when the peer is already likely to have lots of rare pieces. Also, when the node is nearly finished it does not need to gain lots of extra capacity for downloading the few pieces it is still missing.
+</p>
+</section>
+
+<section>
+<h3>c.</h3>
+<p>
+The article states, but does not prove, that the new seed state choke improves performance in the presence of free riders. The problem is that high bandwidth free riders can denial the service of seeds for other nodes, preventing initial dissemination of content.
 - increased piece variation, because of the different world views
 - more robustness against node failures
 Might help new nodes get started faster.
+</p>
+</section>
+</section>
 </section>
 </body>
 </html>
