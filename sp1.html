@@ -226,10 +226,55 @@ The Internet has many properties similar to overlay networks. For example it is 
 </section>
 <section>
 <h2>Assignment 3</h2>
-a) password for the torrent (tracker, scrape, peers), integrity verification, sometimes encryption key exchange
-limiting with scrape
-b) consistency, integrity (filenames to separate copies of the same file)
-c) meta data with updating possibility (trackers, comment, creation date, torrent editor software name)
+<h3>a.</h3>
+<p>
+The info_hash works as a password for a certain torrent. It can be used to request information about other
+peers from the tracker. It can also be used to request pieces from other peers. It works as a unique
+identifier and can be used to limiting the results to a specific torrent when requesting torrent
+availability information using the scrape protocol. Some implementations use the info_hash in key
+exchange to negotiate keys for encrypted communications [1].
+</p>
+<p>
+The info_hash can also be used to verify the integrity of the info structure which is included in
+the torrent file. The info structure contains
+hash values for the payload, which makes info_hash a self-certifying name for the shared content. This
+means that given the shared content and the info structure anyone is able to verify whether or not the
+content matches a given info_hash.
+</p>
+<p>
+While the info_hash can be computed from the info structure in a torrent file, it would typically
+not be stored in the torrent file in a precomputed form. Leaving the precomputed form out forces
+the user of the torrent file to compute the hash instead of merely trusting a precomputed value.
+The content can alternatively be refered to using magnet links which include the info_hash, but
+does not include the info structure. In such case the info structure can be retrieved based on
+the info_hash [2]. The retrieved info structure can then be verified to match the info_hash.
+</p>
+<p>
+[1] <a href="http://wiki.vuze.com/w/Message_Stream_Encryption">http://wiki.vuze.com/w/Message_Stream_Encryption</a><br />
+[2] <a href="http://bittorrent.org/beps/bep_0009.html">http://bittorrent.org/beps/bep_0009.html</a>
+</p>
+<h3>b.</h3>
+<p>
+By including some fields in the info structure, the bittorrent developers are saying that those details
+separate different torrents from each other. Modifying those fields of the torrent file will change
+the torrents identity, separating the torrent swarm from the swarm of the original torrent swarm.
+</p>
+<p>
+One key design decision is that changing the filenames splits the torrent in two. An alternative
+approach would have excluded the filenames, enabling two seeders with different file names, but
+the same content to co-operate. On the otherhand including the filenames in the structure helps
+to ensure that everyone gets the exact same file structure. Having multiple swarms for the same
+content also improves the systems resilience against attacks, as a malicious user would have to
+attack each swarm separately.
+</p>
+<h3>c.</h3>
+<p>
+By excluding some fields from the info structure, the bittorrent developers are enabling those
+fields to be edited without affecting the identity of the torrent. Some examples of such
+metadata includes trackers used for coordination and textual description of the content.
+It is thus possible to add and remove trackers or to do incremental improvements to the
+description without introducing disruptions to the service.
+</p>
 </section>
 
 <section>
