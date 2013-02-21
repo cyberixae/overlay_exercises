@@ -12,7 +12,7 @@ section {
 }
 section section + section {
   border-color: #ddd;
-  border-width: medium 0 0 0;
+  border-width: 0 0 0 0;
 }
 body > section {
   border-color: #777;
@@ -20,6 +20,8 @@ body > section {
 }
 p {
   text-align: justify;
+}
+h3 {
 }
 </style>
 </head>
@@ -37,6 +39,7 @@ no minus points were given for direct quotes, but they were ignored as far as po
 <h2>Assignment 1</h2>
 
 <section>
+<h3>a.</h3>
 <p>
    Some reasons for using overlay networks include different needs regarding privacy, robustness,
    routing topologies, identifier spaces, mobility or scaling. Solving parts of the problem in
@@ -47,6 +50,7 @@ no minus points were given for direct quotes, but they were ignored as far as po
 </p>
 </section>
 <section>
+<h3>b.</h3>
 <p>
    There are practical, political and technological reasons why the Internet can not be
    rapidly changed. Updates need to be carried out incrementally while the system is in
@@ -72,11 +76,12 @@ SDN also makes it possible to reuse the networking equipment for different purpo
 How far this can be taken, remains to be seen.
 </p>
 <p>
-   [1] http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml <br />
-   [2] http://www.ietf.org/rfc/rfc4380.txt
+   [1] <a href="http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml">http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml</a> <br />
+   [2] <a href="http://www.ietf.org/rfc/rfc4380.txt">http://www.ietf.org/rfc/rfc4380.txt</a>
 </p>
 </section>
 <section>
+<h3>c.</h3>
 <p>
    There are several reasons why native networks can perform better than overlays can.
 
@@ -131,6 +136,7 @@ How far this can be taken, remains to be seen.
 <section>
 <h2>Assignment 2</h2>
 <section>
+<h3>a.</h3>
 <p>The following stack is presented in the lecture slides.</p>
 <pre>
 routing
@@ -139,7 +145,7 @@ network
 </pre>
 <p>The network layer is responsible for providing some means for communication. The topology layer takes care of parting and joining nodes and builds them into a network of some shape. The routing layer is responsible for figuring out how requests and responses should be forwarded so they would reach their intended destination.</p>
 
-<p>While the course book presents something like...</p>
+<p>While the course book presents something like the following.</p>
 <pre>
 application
 services
@@ -154,6 +160,7 @@ The network and routing layer are similar to the model from lecture slides. Secu
 </section>
 
 <section>
+<h3>b.</h3>
 <p>The TCP/IP stack (I) is as follows.</p>
 <pre>
 I_application
@@ -162,7 +169,7 @@ I_internet
 I_link
 </pre>
 
-<p>For the sake of simplicity I will only go through the exercise with one overlay stack (O). I'll pick the smaller one, but I'll add an application layer on top. We'll end up with...</p>
+<p>For the sake of simplicity I will only go through the exercise with one overlay stack (O). I'll pick the smaller one, but I'll add an application layer on top.</p>
 <pre>
 O_application
 O_routing
@@ -181,7 +188,7 @@ I_internet
 I_link
 </pre>
 
-<p>Another way to think about it is to use the three lower layers of the TCP/IP directly as an implementation of the O_network layer (O_network = I_link + I_internet + I_transport). In that case the stack would look like this...</p>
+<p>Another way to think about it is to use the three lower layers of the TCP/IP directly as an implementation of the O_network layer (O_network = I_link + I_internet + I_transport).</p>
 <pre>
 O_application
 O_routing
@@ -191,7 +198,7 @@ I_internet
 I_link
 </pre>
 
-<p>A third model can be derived if we consider the stacks to be open ended. That is, there can be layers above O_application and I_application, and there can be layers below O_network and I_link. This means that we can implement O_network as an application for the TCP/IP stack (I_application = O_network). Once we put the other overlay layers on top of that stack it looks like this again...</p>
+<p>A third model can be derived if we consider the stacks to be open ended. That is, there can be layers above O_application and I_application, and there can be layers below O_network and I_link. This means that we can implement O_network as an application for the TCP/IP stack (I_application = O_network). Once we put the other overlay layers on top of that stack it looks like this again.</p>
 <pre>
 O_application
 O_routing
@@ -209,6 +216,7 @@ boxes (implementations) and concentrate on the lines (interfaces) instead.
 
 </section>
 <section>
+<h3>c.</h3>
 <p>The routing layer of the overlay network borrows ideas from forwarding service on the internet layer. Both have a forwarding service, some addressing, and some way of computing routes hop-by-hop without global knowledge of the network. The topology layer defines the topology of an overlay network, where as the link layer contains the topology restrictions in the TCP/IP stack. The network layer of the overlay network defines the hard limitations that can not be overcome on the layers above. In TCP/IP stack link layer defines similar limitations.
 </p>
 <p>
