@@ -135,6 +135,7 @@ Note that json is agnostic to the order of keys in the object,
 and the assignment definition did not specify the order for
 object identifiers in the list. The keys and identifiers are
 ordered here by their size for convenience of the reader.
+You might write the transformation as follows.
 </p>
 <script>
 function transform(json_input) {
@@ -143,20 +144,22 @@ function transform(json_input) {
   var objects = input['objects'];
   nodes.sort();
   objects.sort();
-  var output = {}
+  var output = {};
   var obj = objects.shift();
-  var first_node = nodes[0];
-  for (var i in nodes) {
-    var node = nodes[i];
+  var node = nodes.shift();
+  var first_node = node;
+  while (typeof(node) != typeof(undefined)) {
     var store = [];
     while (obj <= node) {
       store.push(obj);
       obj = objects.shift();
     }
     output[node] = store;
+    node = nodes.shift();
   }
+  var first_store = output[first_node];
   while (typeof(obj) != typeof(undefined)) {
-    output[first_node].push(obj);
+    first_store.push(obj);
     obj = objects.shift();
   }
   var json_output = JSON.stringify(output);
