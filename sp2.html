@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+<meta http-equiv="refresh" content="2" />
+-->
+<style>
+body {
+margin: auto 10%;
+}
+section {
+  page-break-inside: avoid;
+  border: 0 solid #eee;
+}
+/*
+section section + section {
+  border-color: #ddd;
+  border-width: 0 0 0 0;
+}
+body > section {
+  border-color: #777;
+  border-width: medium 0 0 0;
+}
+*/
+p {
+  text-align: justify;
+}
+h3 {
+}
+body script {
+  display: block;
+  white-space: pre;
+  font-family: monospace;
+}
+</style>
+<script>
+  "use strict";
+  function init() {
+    var input_element = document.getElementById('input');
+    var output_element = document.getElementById('output');
+    var json_input = input_element.innerHTML;
+    var json_example = output_element.innerHTML;
+    var json_output = transform(json_input);
+    var error = compare(json_output, json_example);
+    if (typeof(error) != typeof(undefined)) {
+      console.log(error);
+    }
+  }
+
+  function compare(json_answer1, json_answer2) {
+    var answer1 = JSON.parse(json_answer1);
+    var answer2 = JSON.parse(json_answer2);
+    for (var key in answer1) {
+      var objects2 = answer2[key];
+      if (typeof(objects2) == typeof(undefined)) {
+        return 'answer2 is missing a key ' + key;
+      }
+      var objects1 = answer1[key];
+      if (objects1.length != objects2.length) {
+        return 'object amounts differ for key ' + key;
+      }
+      objects2.sort();
+      objects1.sort();
+      for (var i in objects1) {
+        var object1 = objects1[i];
+        var object2 = objects2[i];
+        if (object1 != object2) {
+          return 'objects differ for key ' + key;
+        }
+      }
+    }
+  }
+
+  window.addEventListener('load', init, false);
+</script>
+</head>
+<body>
+<p>
+582615: Overlay and P2P Networks, Spring 2013
+</p>
+
+<section>
+<h1>Spoiler Package II</h1>
+
+<p>
+Many course participants were unfamiliar with the rules for doing quotations.
+Therefore, no minus points were given for failure in quotation or failure in pointing out sources.
+However, please check the list of <a href="problems.html">common quotation problems</a>
+to avoid loosing points on other courses. Double check the rules before attempting to do
+scientific publications, such as a master's thesis.
+</p>
+<p>
+Direct quotes were ignored while grading the assignments.
+Thus, a low score for an assignment does not necessarily imply that the answer was incorrect.
+Furthermore, it was possible to get full points regardless of some errors.
+Therefore, a high score does not imply that everything in the answer was correct.
+</p>
+
+<section>
+<h2>Assignment 5, Spoiler</h2>
+
+<p>
+In Chord the identifier space forms a ring that is used
+to decide which node is responsible for which object.
+Each node is responsible for objects which identifier
+matches that of the node, as well as all objects between
+that node and the preceeding node on the ring.
+</p>
+
+<p>
+Lets consider a simplified json input.
+</p>
+<pre id="input">
+{
+  "nodes": ["00036", "34783", "76321", "93125"],
+  "objects": ["00737", "01105", "01564", "76475",
+              "76493", "76494", "76512", "93125",
+              "93127"]
+}
+</pre>
+<p>
+The json input above needs to be transformed into
+the json output below.
+</p>
+<pre id="output">
+{
+  "00036": ["93127"],
+  "34783": ["00737", "01105", "01564"],
+  "76321": [],
+  "93125": ["76475", "76493", "76494", "76512", "93125"]
+}
+</pre>
+<p>
+Note that json is agnostic to the order of keys in the object,
+and the assignment definition did not specify the order for
+object identifiers in the list. The keys and identifiers are
+ordered here by their size for convenience of the reader.
+</p>
+<script>
+function transform(json_input) {
+  var input = JSON.parse(json_input);
+  var nodes = input['nodes'];
+  var objects = input['objects'];
+  nodes.sort();
+  objects.sort();
+  var output = {}
+  var obj = objects.shift();
+  var first_node = nodes[0];
+  for (var i in nodes) {
+    var node = nodes[i];
+    var store = [];
+    while (obj <= node) {
+      store.push(obj);
+      obj = objects.shift();
+    }
+    output[node] = store;
+  }
+  while (typeof(obj) != typeof(undefined)) {
+    output[first_node].push(obj);
+    obj = objects.shift();
+  }
+  var json_output = JSON.stringify(output);
+  return json_output;
+}
+</script>
+
+<p></p>
+</section>
+
+<!--
+<section>
+<h2>Assignment 6, Spoiler</h2>
+
+<section>
+<h3>a.</h3>
+<p>
+
+</p>
+<p>
+   [1] <a href=""></a> <br />
+</p>
+</section>
+</section>
+-->
+</section>
+</body>
+</html>
