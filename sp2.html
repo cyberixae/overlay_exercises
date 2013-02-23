@@ -252,14 +252,24 @@ Therefore, a high score does not imply that everything in the answer was correct
 <p>
 In Chord the identifier space forms a ring that is used
 to decide which node is responsible for which object.
-Each node is responsible for the object which identifier
-matches that of the node, as well as all objects between
-that node and the preceeding node on the ring.
+The identifier space wraps so after the biggest identifier
+it returns to the smallest.
+Each object that matches a node identifier will be stored
+on the matching node. If the object identifier does not
+match a node the object will be stored on the next node
+in the ring.
 </p>
+<p>
+Thus, a node would typically store objects that have
+an identifier which is smaller or equal to the node
+identifier. The wrapping point is an exception where
+the node with the smallest identifier may end up
+storing some objects with large identifiers. Also,
+some nodes might end up storing no objects.</p>
 
 <p>
 Below you'll find an example how a simplified json input
-would transform.
+would transform. It is interactive. Try modifying the input.
 </p>
 <table>
 <tr>
@@ -327,9 +337,20 @@ function transform(json_input) {
 }
 </script>
 
-<p></p>
+<p>
+While the assignment description had example code written in Python
+I ended up using javascript here so I was able to hook it up
+to the example above.
+</p>
+
 </section>
 
+<section>
+<h2>Assignment 6, 7, 8, Spoilers</h2>
+<p style="border: medium solid #a00; padding: 1em;">I will update the spoiler package as I proceed creating the example answers.
+Expect some more before Sunday morning.
+<br />Cheers, --Toni</p>
+</section>
 <!--
 <section>
 <h2>Assignment 6, Spoiler</h2>
