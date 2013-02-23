@@ -50,6 +50,20 @@ body script {
   function compare(json_answer1, json_answer2) {
     var answer1 = JSON.parse(json_answer1);
     var answer2 = JSON.parse(json_answer2);
+    var nodes1 = Object.keys(answer1);
+    var nodes2 = Object.keys(answer2);
+    if(nodes1.length != nodes2.length) {
+      return 'different amount of nodes';
+    }
+    nodes1.sort();
+    nodes2.sort();
+    for (var i in nodes1) {
+      var node1 = nodes1[i];
+      var node2 = nodes1[i];
+      if (node1 != node2) {
+        return 'different set of nodes';
+      }
+    }
     for (var key in answer1) {
       var objects2 = answer2[key];
       if (typeof(objects2) == typeof(undefined)) {
@@ -157,10 +171,12 @@ function transform(json_input) {
     output[node] = store;
     node = nodes.shift();
   }
-  var first_store = output[first_node];
-  while (typeof(obj) != typeof(undefined)) {
-    first_store.push(obj);
-    obj = objects.shift();
+  if (typeof(first_node) != typeof(undefined)) {
+    var first_store = output[first_node];
+    while (typeof(obj) != typeof(undefined)) {
+      first_store.push(obj);
+      obj = objects.shift();
+    }
   }
   var json_output = JSON.stringify(output);
   return json_output;
