@@ -33,19 +33,29 @@ body script {
   font-family: monospace;
   margin: 1em 0;
 }
+#tests {
+  display: none;
+}
+
+td {
+  vertical-align: top;
+}
+pre {
+  margin: 1em 2em;
+}
 </style>
 <script>
   "use strict";
   function init() {
-    var input_element = document.getElementById('input');
-    var output_element = document.getElementById('output');
-    var json_input = input_element.innerHTML;
-    var json_example = output_element.innerHTML;
-    var json_output = transform(json_input);
-    var error = compare(json_output, json_example);
-    if (typeof(error) != typeof(undefined)) {
-      console.log(error);
-    }
+    pretty('input');
+    pretty('output');
+    var input = document.getElementById('input');
+    var output = document.getElementById('output');
+    input.addEventListener('keyup', update_output, true);
+    output.addEventListener('keyup', update_input, true);
+
+    tests();
+    update_output();
   }
 
   function compare(json_answer1, json_answer2) {
@@ -86,6 +96,72 @@ body script {
     }
   }
 
+  function test(i) {
+    var input_element = document.getElementById('input-' + i);
+    var output_element = document.getElementById('output-' + i);
+    var json_input = input_element.innerHTML;
+    var json_example = output_element.innerHTML;
+    var json_output = transform(json_input);
+    var error = compare(json_output, json_example);
+    if (typeof(error) != typeof(undefined)) {
+      console.log('problem detected while executing test-' + i);
+      console.log(error);
+    }
+  }
+
+  function update_input() {
+    var input_element = document.getElementById('input');
+    var output_element = document.getElementById('output');
+    var json_output = output_element.value;
+    var json_input = detransform(json_output);
+    var input = JSON.parse(json_input);
+    var pretty = JSON.stringify(input, null, '  ');
+    input_element.value = pretty;
+  }
+
+  function update_output() {
+    var input_element = document.getElementById('input');
+    var output_element = document.getElementById('output');
+    var json_input = input_element.value;
+    var json_output = transform(json_input);
+    var output = JSON.parse(json_output);
+    var pretty = JSON.stringify(output, null, '  ');
+    output_element.value = pretty;
+  }
+
+  function tests() {
+    test(1);
+  }
+
+  function pretty(field) {
+    var element = document.getElementById(field);
+    var json = element.value;
+    var content = JSON.parse(json);
+    var pretty = JSON.stringify(content, null, '  ');
+    element.value = pretty;
+  }
+
+  function detransform(json_output) {
+    var output = JSON.parse(json_output);
+    var nodes = [];
+    var objects = [];
+    for (var node in output) {
+      nodes.push(node);
+      var store = output[node];
+      for (var i in store) {
+        var obj = store[i];
+        objects.push(obj);
+      }
+    }
+    nodes.sort();
+    objects.sort();
+    var input = {}
+    input['nodes'] = nodes;
+    input['objects'] = objects;
+    var json_input = JSON.stringify(input);
+    return json_input;
+  }
+
   window.addEventListener('load', init, false);
 </script>
 </head>
@@ -123,34 +199,39 @@ that node and the preceeding node on the ring.
 </p>
 
 <p>
-Lets consider a simplified json input.
+Below you'll find an example how a simplified json input
+would transform.
 </p>
-<pre id="input">
+<table>
+<tr>
+<th>input</th>
+<th>output</th>
+</tr>
+<tr><td>
+<textarea id="input" rows="20">
 {
   "nodes": ["00036", "34783", "76321", "93125"],
   "objects": ["00737", "01105", "01564", "76475",
               "76493", "76494", "76512", "93125",
               "93127"]
 }
-</pre>
-<p>
-The json input above needs to be transformed into
-the json output below.
-</p>
-<pre id="output">
+</textarea>
+</td><td>
+<textarea id="output" rows="20">
 {
   "00036": ["93127"],
   "34783": ["00737", "01105", "01564"],
   "76321": [],
   "93125": ["76475", "76493", "76494", "76512", "93125"]
 }
-</pre>
+</textarea>
+</td></tr></table>
 <p>
 Note that json is agnostic to the order of keys in the object,
 and the assignment definition did not specify the order for
 object identifiers in the list. The keys and identifiers are
 ordered here by their size for convenience of the reader.
-You might write the transformation as follows.
+You might write the transformation in javascript as follows.
 </p>
 <script>
 function transform(json_input) {
@@ -203,5 +284,24 @@ function transform(json_input) {
 </section>
 -->
 </section>
+
+<div id="tests">
+<pre id="input-1">
+{
+  "nodes": ["00036", "34783", "76321", "93125"],
+  "objects": ["00737", "01105", "01564", "76475",
+              "76493", "76494", "76512", "93125",
+              "93127"]
+}
+</pre>
+<pre id="output-1">
+{
+  "00036": ["93127"],
+  "34783": ["00737", "01105", "01564"],
+  "76321": [],
+  "93125": ["76475", "76493", "76494", "76512", "93125"]
+}
+</pre>
+</div>
 </body>
 </html>
