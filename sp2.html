@@ -43,6 +43,9 @@ td {
 pre {
   margin: 1em 2em;
 }
+textarea.invalid {
+  background-color: #fee;
+}
 </style>
 <script>
   "use strict";
@@ -113,7 +116,13 @@ pre {
     var input_element = document.getElementById('input');
     var output_element = document.getElementById('output');
     var json_output = output_element.value;
-    var json_input = detransform(json_output);
+    try {
+      var json_input = detransform(json_output);
+    } catch(e) {
+      output_element.setAttribute('class', 'invalid')
+      return;
+    }
+    output_element.removeAttribute('class')
     var input = JSON.parse(json_input);
     var pretty = JSON.stringify(input, null, '  ');
     input_element.value = pretty;
@@ -123,7 +132,13 @@ pre {
     var input_element = document.getElementById('input');
     var output_element = document.getElementById('output');
     var json_input = input_element.value;
-    var json_output = transform(json_input);
+    try {
+      var json_output = transform(json_input);
+    } catch(e) {
+      input_element.setAttribute('class', 'invalid')
+      return;
+    }
+    input_element.removeAttribute('class')
     var output = JSON.parse(json_output);
     var pretty = JSON.stringify(output, null, '  ');
     output_element.value = pretty;
