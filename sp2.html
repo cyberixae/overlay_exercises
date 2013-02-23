@@ -43,6 +43,10 @@ td {
 pre {
   margin: 1em 2em;
 }
+textarea:hover {
+  background-color: #f6f6ff;
+  cursor: default;
+}
 textarea.invalid {
   background-color: #fee;
 }
@@ -54,8 +58,8 @@ textarea.invalid {
     pretty('output');
     var input = document.getElementById('input');
     var output = document.getElementById('output');
-    input.addEventListener('keyup', update_output, true);
-    output.addEventListener('keyup', update_input, true);
+    input.addEventListener('keyup', user_update_output, true);
+    output.addEventListener('keyup', user_update_input, true);
 
     tests();
     update_output();
@@ -112,36 +116,71 @@ textarea.invalid {
     }
   }
 
-  function update_input() {
+  function validate_input() {
     var input_element = document.getElementById('input');
-    var output_element = document.getElementById('output');
-    var json_output = output_element.value;
-    try {
-      var json_input = detransform(json_output);
-    } catch(e) {
-      output_element.setAttribute('class', 'invalid')
-      return;
-    }
-    output_element.removeAttribute('class')
-    var input = JSON.parse(json_input);
-    var pretty = JSON.stringify(input, null, '  ');
-    input_element.value = pretty;
-  }
-
-  function update_output() {
-    var input_element = document.getElementById('input');
-    var output_element = document.getElementById('output');
     var json_input = input_element.value;
     try {
-      var json_output = transform(json_input);
+      var input = JSON.parse(json_input);
     } catch(e) {
       input_element.setAttribute('class', 'invalid')
       return;
     }
     input_element.removeAttribute('class')
+  }
+
+  function validate_output() {
+    var output_element = document.getElementById('output');
+    var json_output = output_element.value;
+    try {
+      var output = JSON.parse(json_output);
+    } catch(e) {
+      output_element.setAttribute('class', 'invalid')
+      return;
+    }
+    output_element.removeAttribute('class')
+  }
+
+  function validate_fields() {
+    validate_input();
+    validate_output();
+  }
+
+  function user_update_input() {
+    try {
+      update_input();
+    } catch (e) {
+    }
+  }
+
+  function user_update_output() {
+    try {
+      update_output();
+    } catch (e) {
+    }
+  }
+
+  function update_input() {
+    validate_fields();
+    var input_element = document.getElementById('input');
+    var output_element = document.getElementById('output');
+    var json_output = output_element.value;
+    var json_input = detransform(json_output);
+    var input = JSON.parse(json_input);
+    var pretty = JSON.stringify(input, null, '  ');
+    input_element.value = pretty;
+    validate_fields();
+  }
+
+  function update_output() {
+    validate_fields();
+    var input_element = document.getElementById('input');
+    var output_element = document.getElementById('output');
+    var json_input = input_element.value;
+    var json_output = transform(json_input);
     var output = JSON.parse(json_output);
     var pretty = JSON.stringify(output, null, '  ');
     output_element.value = pretty;
+    validate_fields();
   }
 
   function tests() {
