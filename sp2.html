@@ -44,8 +44,10 @@ pre {
   margin: 1em 2em;
 }
 textarea:hover {
-  background-color: #f6f6ff;
   cursor: default;
+}
+textarea#input:hover {
+  background-color: #f6f6ff;
 }
 textarea.invalid {
   background-color: #fee;
@@ -271,7 +273,7 @@ would transform.
 }
 </textarea>
 </td><td>
-<textarea id="output" rows="20">
+<textarea id="output" rows="20" readonly="readonly">
 {
   "00036": ["93127"],
   "34783": ["00737", "01105", "01564"],
