@@ -524,7 +524,14 @@ deterministically using a separate algorithm.
 <section>
 <h3>c.</h3>
 <p>
-
+Node insertion starts by finding the node that is currently closest to the
+identifier of the new node. The objects at that node are distributed between
+the two. Nodes that have common prefixes with the new node are notified, so
+they can update their routing tables. Some of these nodes are used to
+bootstrap the routing table of the new node. The new node queries these
+initial nodes to fill in gaps in its roting table. The nodes that happen
+to come in touch with the queries as a side effect of thise process use
+them to optimize their local routing tables.
 </p>
 </section>
 </section>
