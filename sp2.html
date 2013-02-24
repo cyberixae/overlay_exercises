@@ -581,7 +581,19 @@ one would connect directly to a node run by an adversary.
 <section>
 <h3>c.</h3>
 <p>
-
+The identifiers used with Freenet's location swapping are virtual
+coordinates on a ring. The goal of location swapping is to create
+optimal identifiers for a given topology that ignores the properties
+of the underlay. Thus, the location swapping does not take into
+account geographical locations.
+</p>
+<p>
+The topology of the overlay may however reflect some properties
+of the real world, in which case the location swapping
+might accidentally have some correspondence to the geographical
+locations. This could be the case for example if a local
+Freenet club decided to limit their connections to trusted nodes
+only.
 </p>
 </section>
 </section>
