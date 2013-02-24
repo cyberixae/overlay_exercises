@@ -55,6 +55,33 @@ textarea.invalid {
 textarea#input.invalid {
   background-color: #fee;
 }
+table.tapestry td {
+  border: thin solid #aaa;
+  background-color: #eee;
+  font-family: sans-serif;
+  font-size: 0.7em;
+}
+table.tapestry th {
+  border: thin solid #aaa;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+table.tapestry td.nullcell {
+  background-color: transparent;
+  border-width: 0;
+}
+table.tapestry th.group {
+  background-color: transparent;
+  border-width: 0;
+}
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+.match {
+  color: #a00;
+  font-weight: bold;
+}
 </style>
 <script>
   "use strict";
@@ -346,7 +373,146 @@ to the example above.
 </section>
 
 <section>
-<h2>Assignment 6, 7, 8, Spoilers</h2>
+<h2>Assignment 6, Spoiler</h2>
+
+<section>
+<h3>a.</h3>
+<p>
+
+<p>Lets consider node 8D84 with the neighbours 3D67, 5610, 6065, 8072, 8120, 8121, 82B9, 83F3, 8412, 891F, 8CF9, 8D01, 8D21, 8D59, 8D70, 8D82, 8D83, 8D88, 8D8A, 8D8C, 8D8D, 8D8F, 8D99, 8DCE, 8DFD, 8F2A, 9AD1, B380, DBCA and E782.
+</p>
+
+
+<table class="tapestry">
+<tr>
+<td colspan="2" rowspan="2" class="nullcell"></td>
+<th colspan="16" class="group">direction</th>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+<tr>
+<th rowspan="5" class="group rotate">proximity</th>
+</tr>
+<tr>
+<th>1</th>
+<td></td>
+<td></td>
+<td></td>
+<td><span class="match">3</span>D67</td>
+<td></td>
+<td><span class="match">5</span>610</td>
+<td><span class="match">6</span>065</td>
+<td></td>
+<td class="nullcell"></td>
+<td><span class="match">9</span>AD1</td>
+<td ></td>
+<td><span class="match">B</span>380</td>
+<td ></td>
+<td><span class="match">D</span>BCA</td>
+<td><span class="match">E</span>782</td>
+<td></td>
+</tr>
+<tr>
+<th>2</th>
+<td>8<span class="match">0</span>72</td>
+<td>8<span class="match">1</span>20</td>
+<td>8<span class="match">2</span>B9</td>
+<td>8<span class="match">3</span>F3</td>
+<td>8<span class="match">4</span>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8<span class="match">9</span>1F</td>
+<td></td>
+<td></td>
+<td>8<span class="match">C</span>F9</td>
+<td class="nullcell"></td>
+<td></td>
+<td>8<span class="match">F</span>2A</td>
+
+</tr>
+<tr>
+<th>3</th>
+
+<td>8D<span class="match">0</span>1</td>
+<td></td>
+<td>8D<span class="match">2</span>1</td>
+<td></td>
+<td></td>
+<td>8D<span class="match">5</span>9</td>
+<td></td>
+<td>8D<span class="match">7</span>0</td>
+<td class="nullcell"></td>
+<td>8D<span class="match">9</span>9</td>
+<td></td>
+<td></td>
+<td>8D<span class="match">C</span>E</td>
+<td></td>
+<td></td>
+<td>8D<span class="match">F</span>D</td>
+
+
+</tr>
+<tr>
+<th>4</th>
+<td></td>
+<td></td>
+<td>8D8<span class="match">2</span></td>
+<td>8D8<span class="match">3</span></td>
+<td class="nullcell"></td>
+<td></td>
+<td></td>
+<td></td>
+<td>8D8<span class="match">8</span></td>
+<td></td>
+<td>8D8<span class="match">A</span></td>
+<td></td>
+<td>8D8<span class="match">C</span></td>
+<td>8D8<span class="match">D</span></td>
+<td></td>
+<td>8D8<span class="match">F</span></td>
+
+</tr>
+</table>
+
+<p>As 8120 and 8121 would go into the same slot in the routing table Tapestry discards one or the other based on proximity of the two nodes in the underlay.</p>
+
+</p>
+</section>
+<section>
+<h3>b.</h3>
+<p>
+
+surrogate routing
+</p>
+</section>
+<section>
+<h3>c.</h3>
+<p>
+
+</p>
+</section>
+</section>
+
+<section>
+<h2>Assignment 7, 8, Spoilers</h2>
 <p style="border: medium solid #a00; padding: 1em;">I will update the spoiler package as I proceed creating the example answers.
 Expect some more before Sunday morning.
 <br />Cheers, --Toni</p>
