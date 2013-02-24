@@ -386,7 +386,7 @@ to the example above.
 <table class="tapestry">
 <tr>
 <td colspan="2" rowspan="2" class="nullcell"></td>
-<th colspan="16" class="group">direction</th>
+<th colspan="16" class="group">symbol</th>
 </tr>
 <tr>
 <td>0</td>
@@ -407,7 +407,7 @@ to the example above.
 <td>F</td>
 </tr>
 <tr>
-<th rowspan="5" class="group rotate">proximity</th>
+<th rowspan="5" class="group rotate">level</th>
 </tr>
 <tr>
 <th>1</th>
@@ -492,15 +492,33 @@ to the example above.
 </tr>
 </table>
 
-<p>As 8120 and 8121 would go into the same slot in the routing table Tapestry discards one or the other based on proximity of the two nodes in the underlay.</p>
+<p>
+As 8120 and 8121 would go into the same slot in the routing table Tapestry discards one or the other based on proximity of the two nodes in the underlay. The white cells in the routing table are never accessed, since they match the local node identifier.
+</p>
 
 </p>
 </section>
 <section>
 <h3>b.</h3>
 <p>
-
-surrogate routing
+Queries contain an identifier for the object that is to be stored or retrieved.
+The object identifiers and node identifiers have the same format.
+Each node that receives the query does routing decisions based on its local
+routing table.
+</p>
+<p>
+To determine a cell in the routing table the local node needs to examine
+the object identifier present in the query.
+The correct column in the routing table is determined by the first symbol that
+differs from the local node identifier.
+The correct row is determined based on the longest common prefix between
+the object identifier and the local node identifier. No common prefix selects row 1, a common prefix of length one selects row 2, and so forth.
+</p>
+<p>
+After selecting a cell in the routing table the node forwards the query
+to the neighbour identified by the cell.
+When the selected cell is empty, the node picks another node
+deterministically using a separate algorithm.
 </p>
 </section>
 <section>
