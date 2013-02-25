@@ -112,10 +112,10 @@ Therefore, a high score does not imply that everything in the answer was correct
 <section>
 <h3>a.</h3>
 <p>
-The CAN topology is presented as a wrapping section of x-dimentional (xD) space,
+The CAN topology is presented as a wrapping section of x-dimensional (xD) space,
 where x depends on the configuration of the CAN instance. Depending on the amount
 of dimensions the topology is either a ring (1D), a torus (2D) or a hypertorus
-(xD, x&gt;2). In colloquial language tori are often refered to as doughnuts
+(xD, x&gt;2). In colloquial language tori are often referred to as doughnuts
 because of their resemblance to a bakery product. Each CAN node is responsible for a
 zone in the CAN topology. Neighbours in the topology maintain connections to each other.
 The shape of a zone also depends on the amount of dimensions. A zone can be a line
@@ -125,11 +125,11 @@ segment (1D), a rectangle (2D), a cuboid (3D) or a hypercuboid (xD, x&gt;3).
 When a new node joins the CAN network a random coordinate is selected as the point
 where the new node gets inserted. The system uses basic routing
 to find the node that is responsible for the selected coordinate. The node responsible
-for that point divides its zone into two halfs, and the new node becomes responsible
-for the objects in one of the halfs, while the original node remains responsible
+for that point divides its zone into two halves, and the new node becomes responsible
+for the objects in one of the halves, while the original node remains responsible
 for the other half. As a zone is split the two nodes transfer the corresponding
 objects to the new node and update the routing tables of the neighbouring nodes
-to match the change. Finally, as the two halfs of the original zone are next to
+to match the change. Finally, as the two halves of the original zone are next to
 each other, both of the two nodes add the other to their routing table.
 </p>
 </section>
