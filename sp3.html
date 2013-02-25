@@ -5,6 +5,7 @@
 <meta http-equiv="refresh" content="2" />
 -->
 <style>
+
 body {
 margin: auto 10%;
 }
@@ -55,11 +56,12 @@ textarea.invalid {
 textarea#input.invalid {
   background-color: #fee;
 }
-table.tapestry td {
+table td {
   border: thin solid #aaa;
   background-color: #eee;
   font-family: sans-serif;
-  font-size: 0.7em;
+  padding: 0.2em;
+  vertical-align: right;
 }
 table.tapestry th {
   border: thin solid #aaa;
@@ -183,7 +185,122 @@ Try experimenting with different parameters in the Kademlia Visualizer at
 <section>
 <h3>b.</h3>
 <p>
+Lets consider this question for 5 bit identifiers and hope it generalizes to n bits. With 5 bit identifiers the maximum amount of nodes is 2^5 = 32. With bucket size 0 the routing table does not have space for any nodes.
 </p>
+<p>
+The nodes are divided to different buckets in a way, where half of the nodes are placed in one of the buckets, half of the remaining nodes are placed in the following bucket and so forth until we run out of nodes. The nodes do not store their own identifier in any bucket. Thus, with the bucket size of 32 / 2 &gt;= 16, all existing nodes fit into the routing table.
+</p>
+<p>
+The amount of nodes added with each bucket size increase are as follows.
+<table>
+<tr>
+<th>increased to</th>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>...</td>
+<tr>
+<th>required additional space</th>
+<td>5</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+</table>
+</p>
+<p>
+If we integrate this with a pocket calculator we get the following.
+<table>
+<tr>
+<th>bucket size</th>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+<td>17</td>
+<td>18</td>
+<td>19</td>
+<td>...</td>
+<tr>
+<th>required space</th>
+<td>0</td>
+<td>5</td>
+<td>9</td>
+<td>12</td>
+<td>15</td>
+<td>17</td>
+<td>19</td>
+<td>21</td>
+<td>23</td>
+<td>24</td>
+<td>25</td>
+<td>26</td>
+<td>27</td>
+<td>28</td>
+<td>29</td>
+<td>30</td>
+<td>31</td>
+<td>31</td>
+<td>31</td>
+<td>31</td>
+<td> ...</td>
+</table>
+</p>
+<p>
+Now, by using a plotter we get the following chart.
+</p>
+<object data="http://chart.apis.google.com/chart?cht=lc&amp;chtt=Space Requirement&amp;chs=600x375&amp;chxt=x,y&amp;chxl=0:|0|19|1:|0|40&amp;chds=0,40&amp;chd=t:0,5,9,12,15,17,19,21,23,24,25,26,27,28,29,30,31,31,31,31" type="image/png"></object>
+<p>
+We look at the plot and believe that the storage requirement increases logarithmically. If we would wish someone else to believe us as well, we would continue with a formal proof, that verifies our belief. The proof should probably take into account identifier lengths other than 5.
+</p>
+<p>
+In the analysis above, we estimated the maximum space requirement for the routing table. In practice the nodes are not necessarily aware of all the other nodes that could potentially exist in their routing table. In fact it is not very likely for all the nodes even exist. Even more so because long identifier lengths are often used to make collisions less likely.
+</p>
+
 </section>
 
 <section>
