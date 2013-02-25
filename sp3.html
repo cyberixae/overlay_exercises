@@ -136,13 +136,26 @@ each other, both of the two nodes add the other to their routing table.
 <section>
 <h3>b.</h3>
 <p>
-
+As depicted by Figure 4 in the CAN article, adding dimensions increases routing
+efficiency. However, as more dimensions are added, the benefit of adding more
+dimensions decreases. Adding dimensions also increases routing table sizes.
+Thus there exists a limit how far performance can be improved by adding
+dimensions.
 </p>
 </section>
 <section>
 <h3>c.</h3>
 <p>
-
+The amount of realities refers to redundant copies of the CAN topology in a
+single CAN deployment. Each node may end up responsible for different
+objects in different realities. Thus, the amount of realities affects the
+amount of redundant copies available on the system.
+</p>
+<p>
+The routing performance increase gained from adding
+realities is pretty similar to that of adding dimensions, as can be seen
+by comparing Figure 4 with Figure 5. However, the cost of adding realities
+is higher because of the increased replication.
 </p>
 </section>
 </section>
