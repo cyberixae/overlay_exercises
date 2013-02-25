@@ -295,10 +295,16 @@ Now, by using a plotter we get the following chart.
 </p>
 <object data="http://chart.apis.google.com/chart?cht=lc&amp;chtt=Space Requirement&amp;chs=600x375&amp;chxt=x,y&amp;chxl=0:|0|19|1:|0|40&amp;chds=0,40&amp;chd=t:0,5,9,12,15,17,19,21,23,24,25,26,27,28,29,30,31,31,31,31" type="image/png"></object>
 <p>
-We look at the plot and believe that the storage requirement increases logarithmically. If we would wish someone else to believe us as well, we would continue with a formal proof, that verifies our belief. The proof should probably take into account identifier lengths other than 5.
+We look at the plot and believe that the storage requirement increases logarithmically. If we would wish someone else to believe us as well, we would continue with a formal proof that verifies our belief. The proof should probably take into account identifier lengths other than 5 bits.
 </p>
 <p>
 In the analysis above, we estimated the maximum space requirement for the routing table. In practice the nodes are not necessarily aware of all the other nodes that could potentially exist in their routing table. In fact it is not very likely for all the nodes even exist. Even more so because long identifier lengths are often used to make collisions less likely.
+</p>
+<p>
+The Kademlia paper also describes optimizations where memory for the routing
+table gets allocated dynamically. The bookkeeping required for the
+optimization causes some processing overhead, but save space when the
+routing table is not full.
 </p>
 
 </section>
