@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!--
+<meta http-equiv="refresh" content="2" />
+-->
+<style>
+body {
+margin: auto 10%;
+}
+section {
+  page-break-inside: avoid;
+  border: 0 solid #eee;
+}
+/*
+section section + section {
+  border-color: #ddd;
+  border-width: 0 0 0 0;
+}
+body > section {
+  border-color: #777;
+  border-width: medium 0 0 0;
+}
+*/
+p {
+  text-align: justify;
+}
+h3 {
+}
+body script {
+  display: block;
+  white-space: pre;
+  font-family: monospace;
+  margin: 1em 0;
+}
+#tests {
+  display: none;
+}
+
+td {
+  vertical-align: top;
+}
+pre {
+  margin: 1em 2em;
+}
+textarea:hover {
+  cursor: default;
+}
+textarea#input:hover {
+  background-color: #f6f6ff;
+}
+textarea.invalid {
+  background-color: #fee;
+}
+textarea#input.invalid {
+  background-color: #fee;
+}
+table.tapestry td {
+  border: thin solid #aaa;
+  background-color: #eee;
+  font-family: sans-serif;
+  font-size: 0.7em;
+}
+table.tapestry th {
+  border: thin solid #aaa;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+table.tapestry td.nullcell {
+  background-color: transparent;
+  border-width: 0;
+}
+table.tapestry th.group {
+  background-color: transparent;
+  border-width: 0;
+}
+.rotate {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+}
+.match {
+  color: #a00;
+  font-weight: bold;
+}
+</style>
+</head>
+<body>
+<p>
+582615: Overlay and P2P Networks, Spring 2013
+</p>
+
+<section>
+<h1>Spoiler Package III</h1>
+
+<p>
+Many course participants were unfamiliar with the rules for doing quotations.
+Therefore, no minus points were given for failure in quotation or failure in pointing out sources.
+However, please check the list of <a href="problems.html">common quotation problems</a>
+to avoid loosing points on other courses. Double check the rules before attempting to do
+scientific publications, such as a master's thesis.
+</p>
+<p>
+Direct quotes were ignored while grading the assignments.
+Thus, a low score for an assignment does not necessarily imply that the answer was incorrect.
+Furthermore, it was possible to get full points regardless of some errors.
+Therefore, a high score does not imply that everything in the answer was correct.
+</p>
+
+<section>
+<h2>Assignment 9, Spoiler</h2>
+
+<section>
+<h3>a.</h3>
+<p>
+The CAN topology is presented as a wrapping section of x-dimentional (xD) space,
+where x depends on the configuration of the CAN instance. Depending on the amount
+of dimensions the topology is either a ring (1D), a torus (2D) or a hypertorus
+(xD, x&gt;2). In colloquial language tori are often refered to as doughnuts
+because of their resemblance to a bakery product. Each CAN node is responsible for a
+zone in the CAN topology. Neighbours in the topology maintain connections to each other.
+The shape of a zone also depends on the amount of dimensions. A zone can be a line
+segment (1D), a rectangle (2D), a cuboid (3D) or a hypercuboid (xD, x&gt;3).
+</p>
+<p>
+When a new node joins the CAN network a random coordinate is selected as the point
+where the new node gets inserted. The system uses basic routing
+to find the node that is responsible for the selected coordinate. The node responsible
+for that point divides its zone into two halfs, and the new node becomes responsible
+for the objects in one of the halfs, while the original node remains responsible
+for the other half. As a zone is split the two nodes transfer the corresponding
+objects to the new node and update the routing tables of the neighbouring nodes
+to match the change. Finally, as the two halfs of the original zone are next to
+each other, both of the two nodes add the other to their routing table.
+</p>
+</section>
+<section>
+<h3>b.</h3>
+<p>
+
+</p>
+</section>
+<section>
+<h3>c.</h3>
+<p>
+
+</p>
+</section>
+</section>
+
+<section>
+<h2>Assignment 10, 11, 12, Spoilers</h2>
+<p style="border: medium solid #a00; padding: 1em;">I will update the spoiler package as I proceed creating the example answers.
+<br />Cheers, --Toni</p>
+</section>
+<!--
+<section>
+<h2>Assignment 6, Spoiler</h2>
+
+<section>
+<h3>a.</h3>
+<p>
+
+</p>
+<p>
+   [1] <a href=""></a> <br />
+</p>
+</section>
+</section>
+-->
+</section>
+
+</body>
+</html>
