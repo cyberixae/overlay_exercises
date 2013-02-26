@@ -323,7 +323,7 @@ Dynamo needs to be performant.
 It needs to be able to guarantee lattency and throughtput, not on average, but in the typical case. It needs to support performance contracts where dynamo and the service making use of Dynamo can agree on a sustainable performance level. It needs to support distributing its operation on hundreds of simultaneous storage hosts.
 </p>
 <p>
-Dynamo also needs to provide some reliability guarantees. It needs to be always writable, and it must be able to guarantee that the information has been stored in durable storage. It needs to be completely decentralized so there is no single point of failure. It needs to provide some weak consistency guarantees, but providing full ACID guarantees is in conflict with the other requirement.
+Dynamo also needs to provide some reliability guarantees. It needs to be always writable, and it must be able to guarantee that the information has been stored in durable storage. It needs to be completely decentralized so there is no single point of failure. It needs to provide some weak consistency guarantees, but providing full ACID guarantees is in conflict with the other requirements.
 </p>
 <p>
 Further more Dynamo has some administrational requirements. It needs to support adding new nodes easily. The Dynamo deployment needs to be configurable depending on the needs of the application. There must be a way of rolling out hardware updates incrementally. The system needs to support heterogenic hardware, since newly deployed hosts may be more powerfull than the existing hosts. The distribution needs to be symmetrical to be easy to maintain. It does not need to be particularly secure, as it is run in an isolated environment.
