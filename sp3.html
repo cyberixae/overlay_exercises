@@ -314,7 +314,43 @@ scientific article that compares different DHTs.
 </section>
 
 <section>
-<h2>Assignment 11, 12, Spoilers</h2>
+<h2>Assignment 11, Spoiler</h2>
+
+<section>
+<h3>a.</h3>
+<p>
+Dynamo needs to be performant.
+It needs to be able to guarantee lattency and throughtput, not on average, but in the typical case. It needs to support performance contracts where dynamo and the service making use of Dynamo can agree on a sustainable performance level. It needs to support distributing its operation on hundreds of simultaneous storage hosts.
+</p>
+<p>
+Dynamo also needs to provide some reliability guarantees. It needs to be always writable, and it must be able to guarantee that the information has been stored in durable storage. It needs to be completely decentralized so there is no single point of failure. It needs to provide some weak consistency guarantees, but providing full ACID guarantees is in conflict with the other requirement.
+</p>
+<p>
+Further more Dynamo has some administrational requirements. It needs to support adding new nodes easily. The Dynamo deployment needs to be configurable depending on the needs of the application. There must be a way of rolling out hardware updates incrementally. The system needs to support heterogenic hardware, since newly deployed hosts may be more powerfull than the existing hosts. The distribution needs to be symmetrical to be easy to maintain. It does not need to be particularly secure, as it is run in an isolated environment.
+</p>
+</section>
+
+<section>
+<h3>b.</h3>
+<p>
+
+</p>
+</section>
+
+<section>
+<h3>c.</h3>
+<p>
+Dynamo has been designed for hunreds of hosts. Thus, the routing tables
+will be small enough for every node to store them. As the hosts can run
+multiple virtual hosts, the amount of entries in the routing table will
+be some small multiple of a thousand at its largest. As the system does
+not need to scale infinitely it can optimize routing accordingly.
+</p>
+</section>
+</section>
+
+<section>
+<h2>Assignment 12, Spoiler</h2>
 <p style="border: medium solid #a00; padding: 1em;">I will update the spoiler package as I proceed creating the example answers.
 <br />Cheers, --Toni</p>
 </section>
