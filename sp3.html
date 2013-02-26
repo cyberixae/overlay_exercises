@@ -333,7 +333,14 @@ Further more Dynamo has some administrational requirements. It needs to support 
 <section>
 <h3>b.</h3>
 <p>
-
+Dynamo uses vector clocks as version information on stored objects.
+Conflicting entries can enter the system through system failures or
+through multiple simultaneous edits. Conflicting edits are stored in
+the system and revealed to the application as results of read
+operations. It is the responsibility
+of the application to solve conflicts. For example, two conflicting
+shopping carts can be merged by the application. However, removed
+items may reappear in the shopping cart as a consequence of the merge.
 </p>
 </section>
 
