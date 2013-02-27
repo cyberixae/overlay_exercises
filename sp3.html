@@ -358,24 +358,61 @@ not need to scale infinitely it can optimize routing accordingly.
 
 <section>
 <h2>Assignment 12, Spoiler</h2>
-<p style="border: medium solid #a00; padding: 1em;">I will update the spoiler package as I proceed creating the example answers.
-<br />Cheers, --Toni</p>
-</section>
-<!--
-<section>
-<h2>Assignment 6, Spoiler</h2>
 
 <section>
 <h3>a.</h3>
 <p>
-
+DNS has good sides, but it also has its shortcomings.
+It is widely deployed and proven to work in practice.
+However, it can not efficiently manage rapid updates
+and end-users do not often have write access to DNS
+records. It is also based on hierarchical namespaces
+and is therefore not well-suited for flat namespaces.
 </p>
 <p>
-   [1] <a href=""></a> <br />
+DHTs can fill in where DNS is lacking, as DHTs can
+handle frequent updates. DHTs are also typically based
+on flat namespaces. The important question is whether
+or not DHTs can be secured to match the security
+provided by DNS.
+</p>
+</section>
+
+<section>
+<h3>b.</h3>
+<p>
+DHTs concentrate on routing and seldom provide
+security features such as access control out of the
+box. Thus, applications that use DHTs need to
+either run custom DHT instances in isolated
+environments or accept the low security level
+provided by a public DHT.
+</p>
+<p>
+When DHTs are used for name resolution they need to
+be isolated to prevent denial of service and
+spoofing attacks. Access can then be allowed through
+a wrapper service that makes sure write requests
+to the system are authenticated. One way to
+authenticate the user is to only accept authenticated
+HIP connections. In addition to authenticating the user
+the wrapper can enforce an access control policy.
+With a name resolution service it is natural to
+define a policy that lets everyone modify their
+address information, but does not let anyone modify
+address information of other users.
+</p>
+<p>
+</p>
+</section>
+
+<section>
+<h3>c.</h3>
+<p>
+
 </p>
 </section>
 </section>
--->
 </section>
 
 </body>
