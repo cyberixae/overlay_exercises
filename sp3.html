@@ -409,7 +409,35 @@ address information of other users.
 <section>
 <h3>c.</h3>
 <p>
-
+The goal of the experiment was to measure performance
+of the access control wrapper created for the DHT.
+For that reason the authors did their measurements
+against a single node of each system. Thus, the
+measurement gives us little information about how
+the two systems would compare in a situation with
+multiple nodes.
+</p>
+<p>
+We do not know why a single OpenLookup node is
+more efficient than a single Bamboo node, but we
+can guess. Maybe some of Bamboo's distribution
+techniques cause some overhead. The single node
+might simulate some topology, distribute objects
+among virtual copies of itself, build routing
+tables and forward queries within that virtual
+topology. Then again, it might not.
+</p>
+<p>
+Implementation
+details could also affect performance. Bamboo
+is implemented in Java, while OpenLookup is
+implemented in Python. We could try to find
+some results on how programs written in those two
+languages typically compare. However, the reason
+is likely to be more fine grained than
+that. Truly finding out would require us to do
+some research. Unfortunately, that is out of
+the scope of this assignment.
 </p>
 </section>
 </section>
