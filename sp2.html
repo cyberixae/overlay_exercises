@@ -85,6 +85,59 @@ table.tapestry th.group {
 </style>
 <script>
   "use strict";
+
+  var input_json;
+
+  function check_answer(i) {
+    var input_element = document.getElementById('input-' + i);
+    var output_element = document.getElementById('output-' + i);
+    var json_input = input_element.innerHTML;
+    var json_example = output_element.innerHTML;
+    var json_output = transform(json_input);
+    var error = compare(json_output, json_example);
+    if (typeof(error) != typeof(undefined)) {
+      console.log('problem detected while executing test-' + i);
+      console.log(error);
+    }
+  }
+
+  function reqListener () {
+    input_json = this.responseText;
+    var answers = document.getElementById('answers');
+    answers.removeAttribute('disabled');
+  };
+
+  function load_input() {  
+    var xhr = new XMLHttpRequest();
+    xhr.onload = reqListener;
+    xhr.open("get", 'input.json', true);
+    xhr.send();
+  }
+
+  function moreFiles() {  
+    var files = document.getElementById('answers').files;
+    for (var i in files) {
+      var file = files[i];
+      var reader = new FileReader();
+      reader.readAsText(file, 'UTF-8');
+      reader.onload = loaded_factory(file.name);
+      reader.onerror = console.log;
+    }
+    console.log(input_json)
+  }
+
+  function loaded_factory(filename) {
+    return function loaded(evt) { 
+      var data = evt.target.result;
+      var results = document.getElementById('results');
+      var result = document.createElement('div');
+      var fntext = document.createTextNode(filename);
+      result.appendChild(fntext);
+      results.appendChild(result);
+      //console.log(filename, data);
+    }
+  }
+
   function init() {
     pretty('input');
     pretty('output');
@@ -92,9 +145,11 @@ table.tapestry th.group {
     var output = document.getElementById('output');
     input.addEventListener('keyup', user_update_output, true);
     output.addEventListener('keyup', user_update_input, true);
-
+    var answers = document.getElementById('answers');
+    answers.addEventListener('change', moreFiles, false);
     tests();
     update_output();
+    load_input();
   }
 
   function compare(json_answer1, json_answer2) {
@@ -358,6 +413,12 @@ I ended up using javascript here so I was able to hook it up
 to the example above.
 </p>
 
+<h3>Exercise Checker</h3>
+<p>
+  <input type="file" id="answers" multiple="multiple" disabled="disabled"/>
+  <div id="results">
+  </div>
+</p>
 </section>
 
 <section>
