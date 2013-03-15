@@ -86,23 +86,20 @@ table.tapestry th.group {
 <script>
   "use strict";
 
-  var input_json;
+  var global_answer;
 
-  function check_answer(i) {
-    var input_element = document.getElementById('input-' + i);
-    var output_element = document.getElementById('output-' + i);
-    var json_input = input_element.innerHTML;
-    var json_example = output_element.innerHTML;
-    var json_output = transform(json_input);
-    var error = compare(json_output, json_example);
+  function check_answer(student_answer) {
+    var error = compare(student_answer, global_answer);
     if (typeof(error) != typeof(undefined)) {
-      console.log('problem detected while executing test-' + i);
+      console.log('incorrect answer');
       console.log(error);
+    } else {
+      console.log('correct');
     }
   }
 
   function reqListener () {
-    input_json = this.responseText;
+    global_answer =  transform(this.responseText);
     var answers = document.getElementById('answers');
     answers.removeAttribute('disabled');
   };
@@ -123,17 +120,18 @@ table.tapestry th.group {
       reader.onload = loaded_factory(file.name);
       reader.onerror = console.log;
     }
-    console.log(input_json)
   }
 
   function loaded_factory(filename) {
     return function loaded(evt) { 
-      var data = evt.target.result;
+      var student_answer = evt.target.result;
       var results = document.getElementById('results');
       var result = document.createElement('div');
       var fntext = document.createTextNode(filename);
       result.appendChild(fntext);
       results.appendChild(result);
+      console.log(filename);
+      check_answer(student_answer);
       //console.log(filename, data);
     }
   }
