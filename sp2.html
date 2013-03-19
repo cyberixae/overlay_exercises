@@ -9,130 +9,208 @@ body {
 margin: auto 10%;
 }
 section {
-  page-break-inside: avoid;
-  border: 0 solid #eee;
+page-break-inside: avoid;
+border: 0 solid #eee;
 }
 /*
 section section + section {
-  border-color: #ddd;
-  border-width: 0 0 0 0;
+border-color: #ddd;
+border-width: 0 0 0 0;
 }
 body > section {
-  border-color: #777;
-  border-width: medium 0 0 0;
+border-color: #777;
+border-width: medium 0 0 0;
 }
 */
 p {
-  text-align: justify;
+text-align: justify;
 }
 h3 {
 }
 body script {
-  display: block;
-  white-space: pre;
-  font-family: monospace;
-  margin: 1em 0;
+display: block;
+white-space: pre;
+font-family: monospace;
+margin: 1em 0;
 }
 #tests {
-  display: none;
+display: none;
 }
 
 td {
-  vertical-align: top;
+vertical-align: top;
 }
 pre {
-  margin: 1em 2em;
+margin: 1em 2em;
 }
 textarea:hover {
-  cursor: default;
+cursor: default;
 }
 textarea#input:hover {
-  background-color: #f6f6ff;
+background-color: #f6f6ff;
 }
 textarea.invalid {
-  background-color: #fee;
+background-color: #fee;
 }
 textarea#input.invalid {
-  background-color: #fee;
+background-color: #fee;
 }
 table.tapestry td {
-  border: thin solid #aaa;
-  background-color: #eee;
-  font-family: sans-serif;
-  font-size: 0.7em;
+border: thin solid #aaa;
+background-color: #eee;
+font-family: sans-serif;
+font-size: 0.7em;
 }
 table.tapestry th {
-  border: thin solid #aaa;
-  font-family: sans-serif;
-  background-color: #eee;
+border: thin solid #aaa;
+font-family: sans-serif;
+background-color: #eee;
 }
 table.tapestry td.nullcell {
-  background-color: transparent;
-  border-width: 0;
+background-color: transparent;
+border-width: 0;
 }
 table.tapestry th.group {
-  background-color: transparent;
-  border-width: 0;
+background-color: transparent;
+border-width: 0;
 }
 .rotate {
-  -webkit-transform: rotate(-90deg);
-  -moz-transform: rotate(-90deg);
+-webkit-transform: rotate(-90deg);
+-moz-transform: rotate(-90deg);
 }
 .match {
-  color: #a00;
-  font-weight: bold;
+color: #a00;
+font-weight: bold;
+}
+#results div {
+background-color: #eee;
+border: thin solid #aaa;
+margin-bottom: 1em;
 }
 </style>
 <script>
-  "use strict";
+"use strict";
 
-  var global_answer;
+var global_input;
+var global_answer;
 
-  function check_answer(student_answer) {
-    var error = compare(student_answer, global_answer);
-    if (typeof(error) != typeof(undefined)) {
-      console.log('incorrect answer');
-      console.log(error);
-    } else {
-      console.log('correct');
-    }
-  }
+function check_items(student_answer) {
+try {
+var answer = JSON.parse(student_answer);
+} catch(e) {
+if (e instanceof SyntaxError) {
+return 'invalid JSON';
+}
+throw e;
+}
+var correct = JSON.parse(global_input);
+var correct_nodes = correct['nodes'];
+var correct_objects = correct['objects'];
+var student_nodes = [];
+var student_objects = [];
+for (var node in answer) {
+var objects = answer[node];
+student_nodes.push(node);
+student_objects.push.apply(student_objects, objects);
+}
+if (student_nodes.length > correct_nodes.length) {
+return 'some extra nodes appeared';
+}
+if (student_objects.length > correct_objects.length) {
+return 'some extra objects appeared';
+}
+correct_nodes.sort();
+student_nodes.sort();
+for (var i in correct_nodes) {
+var correct_node = correct_nodes[i];
+var student_node = student_nodes[i];
+if (student_node != correct_node) {
+return 'node ' + correct_node + ' is missing from the answer';
+}
+}
+correct_objects.sort();
+student_objects.sort();
+for (var i in correct_objects) {
+var correct_object = correct_objects[i];
+var student_object = student_objects[i];
+if (student_object != correct_object) {
+return 'object ' + correct_object + ' is missing from the answer';
+}
+}
+return null
+}
 
-  function reqListener () {
-    global_answer =  transform(this.responseText);
-    var answers = document.getElementById('answers');
-    answers.removeAttribute('disabled');
-  };
+function check_answer(student_answer) {
+var error = compare(student_answer, global_answer);
+if (typeof(error) != typeof(undefined)) {
+return error;
+} else {
+return null;
+}
+}
 
-  function load_input() {  
-    var xhr = new XMLHttpRequest();
-    xhr.onload = reqListener;
-    xhr.open("get", 'input.json', true);
-    xhr.send();
-  }
+function reqListener () {
+global_input = this.responseText;
+global_answer =  transform(global_input);
+var answers = document.getElementById('answers');
+answers.removeAttribute('disabled');
+};
 
-  function moreFiles() {  
-    var files = document.getElementById('answers').files;
-    for (var i in files) {
-      var file = files[i];
-      var reader = new FileReader();
-      reader.readAsText(file, 'UTF-8');
-      reader.onload = loaded_factory(file.name);
-      reader.onerror = console.log;
-    }
-  }
+function load_input() {  
+var xhr = new XMLHttpRequest();
+xhr.onload = reqListener;
+xhr.open("get", 'input.json', true);
+xhr.send();
+}
 
-  function loaded_factory(filename) {
-    return function loaded(evt) { 
-      var student_answer = evt.target.result;
-      var results = document.getElementById('results');
-      var result = document.createElement('div');
-      var fntext = document.createTextNode(filename);
-      result.appendChild(fntext);
-      results.appendChild(result);
-      console.log(filename);
-      check_answer(student_answer);
-      //console.log(filename, data);
+function moreFiles() {  
+var files = document.getElementById('answers').files;
+for (var i in files) {
+var file = files[i];
+var reader = new FileReader();
+reader.readAsText(file, 'UTF-8');
+reader.onload = loaded_factory(file.name);
+reader.onerror = console.log;
+}
+}
+
+function add_answer_result(filename, rationale, error, points) {
+var br = document.createElement('br');
+var br2 = document.createElement('br');
+var br3 = document.createElement('br');
+var fntext = document.createTextNode(filename);
+var dtext = document.createTextNode(rationale);
+var etext = document.createTextNode(error);
+var ptext = document.createTextNode(points);
+var result = document.createElement('div');
+result.appendChild(fntext);
+result.appendChild(br);
+result.appendChild(dtext);
+result.appendChild(br2);
+result.appendChild(etext);
+result.appendChild(br3);
+result.appendChild(ptext);
+var results = document.getElementById('results');
+results.appendChild(result);
+}
+
+function loaded_factory(filename) {
+return function loaded(evt) { 
+var student_answer = evt.target.result;
+var items = check_items(student_answer);
+if (items != null) {
+var reason = 'The answer does not contain a valid mapping from given objects to given nodes.';
+add_answer_result(filename, reason, items, '1 OEPS awarded for trying.');
+return;
+}
+var description = check_answer(student_answer);
+if (description != null) {
+var reason = 'The answer contains a valid mapping, but it is not the one used by Chord.';
+add_answer_result(filename, reason, description, '3 OEPs awarded.');
+return;
+}
+add_answer_result(filename, 'Correct answer.', 'Good job!', '5 OEPs awarded.');
+      return;
     }
   }
 
