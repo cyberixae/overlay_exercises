@@ -87,6 +87,11 @@ background-color: #eee;
 border: thin solid #aaa;
 margin-bottom: 1em;
 }
+.checker {
+font-family: sans-serif;
+background-color: #fec;
+padding: 1em;
+}
 </style>
 <script>
 "use strict";
@@ -178,12 +183,14 @@ function add_answer_result(filename, rationale, error, points) {
 var br = document.createElement('br');
 var br2 = document.createElement('br');
 var br3 = document.createElement('br');
+var strong = document.createElement('strong');
 var fntext = document.createTextNode(filename);
 var dtext = document.createTextNode(rationale);
 var etext = document.createTextNode(error);
 var ptext = document.createTextNode(points);
 var result = document.createElement('div');
-result.appendChild(fntext);
+strong.appendChild(fntext);
+result.appendChild(strong);
 result.appendChild(br);
 result.appendChild(dtext);
 result.appendChild(br2);
@@ -489,12 +496,15 @@ I ended up using javascript here so I was able to hook it up
 to the example above.
 </p>
 
+<div class="checker">
 <h3>Exercise Checker</h3>
+<p>Select some json answers with the file selector below to check the answers.</p>
 <p>
   <input type="file" id="answers" multiple="multiple" disabled="disabled"/>
   <div id="results">
   </div>
 </p>
+<div>
 </section>
 
 <section>
