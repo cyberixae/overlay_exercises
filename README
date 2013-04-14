@@ -1,0 +1,32 @@
+Exercise packages created by Toni Ruottu for the University of Helsinki Spring 2013 Overlay and P2P Networks course (582615). The author wants to thank Samu Varjonen, Eemil Lagerspetz and Sasu Tarkoma for help in planning and polishing the assignments.
+
+The packages contain 12 assignments and 3 turbo challenges. The packages have been edited since the course to remove course specific details. The following topics are covered.
+
+a1 justification for overlay networks
+a2 overlay network stack
+a3 content references (BitTorrent)
+a4 content dissemination strategies (BitTorrent)
+a5 object mapping calculation (Chord)
+a6 DHT routing tables (Tapestry)
+a7 security and privacy implications (Freenet)
+a8 mathematical modeling (power law)
+a9 replication and fault-tolerance (CAN)
+a10 routing table size implications (Kademlia)
+a11 service level requirements (Dynamo)
+a12 comparing DHTs to centralized systems (Bamboo DHT, DNS, OpenLookup)
+
+t1 figuring out details of described algorithms (BitTorrent)
+t2 understanding possible weaknesses in overlay systems (Freenet)
+t3 getting to know browser-based overlay networking (WebRTC)
+
+Contents of distinct files are described below.
+
+README      description of package contents
+input.json  json input for a5
+ex1.html    a1-4 and t1
+ex2.html    a5-8 and t2
+ex3.html    a9-12 and t3
+sp1.html    spoilers for a1-4
+sp2.html    spoilers for a5-8
+sp3.html    spoilers for a9-12
+
