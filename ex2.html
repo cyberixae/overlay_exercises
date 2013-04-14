@@ -11,55 +11,17 @@ section
 
 </style></head><body>
 
-<p>
-582615: Overlay and P2P Networks, Spring 2013
-</p>
+<section>
+<h1>Exercise Package II</h1>
 
 <section>
-<h1>Exercise Package II (20 OEPs)</h1>
-<p>
-Pair work (groups of two people). Four exercises and one turbo challenge. Doing the exercises awards you overlay exercise points (OEPs). There are three exercise packages, each worth 20 OEPs. 5 OEPs will buy you one point in the exam. The theoretical maximum for the exercises is 60 OEPs. Doing all the exercises will grant you 12 points in the exam.
-</p>
-
-<section>
-<h2>Schedule</h2>
-<p>
-Clarifications session: Friday 1.2.2013 at 14:15 in D122 (you ask questions about the questions)<br />
-Exercise deadline: <strong>Thursday</strong> 7.2.2013 at <strong>16:00</strong> (you return the answers by email)<br />
-Publication of the correct answers: Friday 8.2.2013 at 14:15 in D122 (we go through the correct answers together)
-</p>
-
-</section><section>
-<h2>Submission Instructions</h2>
-<p>
-
-<ol>
- <li>Create a document with your answers to the presented assignments.</li>
- <li>Include names and student numbers of both participants in the document.</li>
- <li>Produce a txt file or a pdf file for submission.</li>
- <li>Name the file <em>snumber1</em>-<em>snumber2</em>-ex2.<em>extension</em><br />(where you replace<br /><em>snumber1</em> with the student number of one student in the pair,<br /> <em>snumber2</em> with the student number of the other student in the pair, and<br /><em>extension</em> with the correct file extension)</li>
- <li>Send the file to toni.ruottu@cs.helsinki.fi with "Overlay Exercise II" as the subject</li>
-</ol>
-</p>
-
-</section><section>
-<h2>Assignment 5 (5 OEPs)</h2>
+<h2>Assignment 5</h2>
 
 <p>Chord is a distributed hash table (DHT) that assigns objects to nodes based on their identifiers.</p>
 
 <p>In the provided file <a href="input.json">input.json</a> you will find a json dictionary. The dictionary contains two lists of Chord identifiers. It has node identifiers stored under key "nodes" and object identifiers stored under key "objects". Your task is to write a computer program that computes the responsible node for each object.</p>
 
-<p>You need to attach <strong>two</strong> additional files with your submission email:
-<ol>
-<li>
-<em>snumber1</em>-<em>snumber2</em>-ex2.json needs to contain the mapping as computed by your program. The file needs to be a valid json file with a json object (associative array) as the root element. The root element should contain all node identifiers as keys, and the value for each node should be a list of object identifiers that the corresponding node is responsible for. Nodes that are not responsible for any objects need to be included with an empty list of objects. The identifiers need to be five digit numbers presented as strings padded with leading zeros. See input.json for an example on the identifier format. <strong>The format is important because your answer will be checked by a computer</strong>.<br /><br />
-</li>
-<li>
-<em>snumber1</em>-<em>snumber2</em>-ex2.zip needs to contain your programs source code. You may use tar instead of zip if you wish. In such case just replace the file extension with a more appropriate one.
-</li>
-</ol>
-<strong>Failing to provide</strong> either the json results or your program's source code will score zero points for assignment 5.
-</p>
+
 
 
 <p>You may pick any programming language you wish. Using a json library is recommended. For example, to get started in Python you might do something like...</p>
@@ -82,7 +44,7 @@ You may familiarize yourself with json at <a href="http://json.org/">http://json
 </p>
 
 </section><section>
-<h2>Assignment 6 (5 OEPs)</h2>
+<h2>Assignment 6</h2>
 
 <p>Tapestry is a distributed hash table (DHT) that routes requests based on routing tables.</p>
 
@@ -97,7 +59,7 @@ Operation of Tapestry is explained in the journal article "Tapestry: A Resilient
 </p>
 
 </section><section>
-<h2>Assignment 7 (5 OEPs)</h2>
+<h2>Assignment 7</h2>
 
 <p>The Freenet Project is building and overlay with the goal of enhancing online privacy. Efficient operation of the system is based on a location swapping technique.</p>
 
@@ -116,7 +78,7 @@ The location swapping algorithm was later introduced as an addition to Freenet's
 </p>
 
 </section><section>
-<h2>Assignment 8 (5 OEPs)</h2>
+<h2>Assignment 8</h2>
 
 <p>Sometimes network researchers discuss mathematical network models such as small-world networks, scale-free networks and the power law.</p>
 
@@ -132,8 +94,6 @@ The video from assignment 7 should help you get started with the basic concepts,
 
 </section><section>
 <h2>Turbo Challenge 2</h2>
-
-<p style="font-style: italic;">Disclaimer: The turbo challenge presented below is extremely hard and does not grant you extra points. However a decent solution for the turbo challenge may award some compensation for lack of points in other assignments.</p>
 
 <p>Some researchers have pointed out possible flaws in the location swapping technique employed by Freenet.</p>
 

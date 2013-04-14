@@ -11,40 +11,11 @@ section
 
 </style></head><body>
 
-<p>
-582615: Overlay and P2P Networks, Spring 2013
-</p>
+<section>
+<h1>Exercise Package I</h1>
 
 <section>
-<h1>Exercise Package I (20 OEPs)</h1>
-<p>
-Pair work (groups of two people). Four exercises and one turbo challenge. Doing the exercises awards you overlay exercise points (OEPs). There are three exercise packages, each worth 20 OEPs. 5 OEPs will buy you one point in the exam. The theoretical maximum for the exercises is 60 OEPs. Doing all the exercises will grant you 12 points in the exam.
-</p>
-
-<section>
-<h2>Schedule</h2>
-<p>
-Clarifications session: Friday 18.1.2013 at 14:15 in D122 (you ask questions about the questions)<br />
-<span style="text-decoration: line-through;">Exercise deadline: <strong>Thursday</strong> 24.1.2013 at <strong>16:00</strong> (you return the answers by email)</span><br />
-<span style="color: #f00;">Exercise deadline: <strong>Friday</strong> 25.1.2013 at <strong>12:00</strong> (you return the answers by email)</span><br />
-Publication of the correct answers: Friday 25.1.2013 at 14:15 in D122 (we go through the correct answers together)
-</p>
-
-</section><section>
-<h2>Submission Instructions</h2>
-<p>
-
-<ol>
- <li>Create a document with your answers to the presented assignments.</li>
- <li>Include names and student numbers of both participants in the document.</li>
- <li>Produce a txt file or a pdf file for submission.</li>
- <li>Name the file <em>snumber1</em>-<em>snumber2</em>-ex1.<em>extension</em><br />(where you replace<br /><em>snumber1</em> with the student number of one student in the pair,<br /> <em>snumber2</em> with the student number of the other student in the pair, and<br /><em>extension</em> with the correct file extension)</li>
- <li>Send the file to toni.ruottu@cs.helsinki.fi with "Overlay Exercise I" as the subject</li>
-</ol>
-</p>
-
-</section><section>
-<h2>Assignment 1 (4 OEPs)</h2>
+<h2>Assignment 1</h2>
 <p>
 Your friend who has not taken the overlay course wants to know whether or not overlays are useful. He is really stubborn and wants to use the bare Internet. You of course have taken the course and happen to know that overlay networks are the perfect match for all the use cases your friend keeps going on about.
 </p>
@@ -60,7 +31,7 @@ The book and the lectures contain some spoilers, but you could do some Googling 
 </p>
 
 </section><section>
-<h2>Assignment 2 (4 OEPs)</h2>
+<h2>Assignment 2</h2>
 
 <p>
 The TCP/IP stack contains some loose layering where protocols are assigned to different layers. Similar layer models have been presented for overlay networks.
@@ -77,7 +48,7 @@ Check lecture slides for stack pictures.
 </p>
 
 </section><section>
-<h2>Assignment 3 (4 OEPs)</h2>
+<h2>Assignment 3</h2>
 
 <p>
 BitTorrent uses torrent files as the main method for addressing content. Some of the information available in the torrent file is contained in a structure named info, while some information is kept outside the info structure. The specification mentions info_hash in multiple places. It is a hash value over the info structure.
@@ -94,7 +65,7 @@ The specification at <a href="http://wiki.theory.org/BitTorrentSpecification">ht
 </p>
 
 </section><section>
-<h2>Assignment 4 (8 OEPs)</h2>
+<h2>Assignment 4</h2>
 <p>
 There are two key strategies that affect the operation of BitTorrent content dissemination. One of the strategies is used to manage connections between nodes. The algorithm implementing the default connection strategy is called "choke". The other strategy is used to decide the order for retrieving parts of the content. The algorithm implementing the default download order strategy is called "rarest first". One goal of such strategic algorithms is to ensure that actions taken by misbehaving nodes do not harm the network, but rather contribute to efficient operation instead.
 </p>
@@ -109,15 +80,6 @@ There are two key strategies that affect the operation of BitTorrent content dis
 
 </section><section>
 <h2>The Turbo Challenge</h2>
-
-<p style="color: #f00;">
-We have decided to accept submissions for the turbo challenge as separate submissions until <strong>16:00</strong> on Thursday <strong>31.1.2013</strong>.<br />
-Just name your answer file to match the following pattern <em>snumber1</em>-<em>snumber2</em>-ex1<strong>-tc</strong>.<em>extension</em>
-and use "Overlay Exercise I <strong>TC</strong>" as the email subject line.<br />
-We will go through the turbo challenge answer during the Exercise Package II clarifications session on Friday 1.2.2013 at 14:15 in D122.<br />
-</p>
-
-<p style="font-style: italic;">Disclaimer: The turbo challenge presented below is extremely hard and does not grant you extra points. However a decent solution for the turbo challenge may award some compensation for lack of points in other assignments.</p>
 
 <p>You have managed to convince your friend. He is now all into overlay networks. He works day and night to build his own start-up. Together with the other founder they have decided to build a content delivery network (CDN) based on content dissemination techniques used in BitTorrent. Your friend fell in love with the performance of the new seed state modification (lets call it nssm) done to the choke algorithm in BitTorrent 4.0.0, but he still has some trouble with the specifics of the algorithm.</p>
 
