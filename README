@@ -1,4 +1,8 @@
-Exercise packages created by Toni Ruottu for the University of Helsinki Spring 2013 Overlay and P2P Networks course (582615). The author wants to thank Samu Varjonen, Eemil Lagerspetz and Sasu Tarkoma for help in planning and polishing the assignments.
+Exercise packages created by Toni Ruottu for the University of Helsinki (UH) Spring 2013 Overlay and P2P Networks course (582615). The author wants to thank Samu Varjonen, Eemil Lagerspetz and Sasu Tarkoma for help in planning and polishing the assignments.
+
+Some of the exercises were inspired by earlier iterations of the course. The author attended the Autumn 2008 iteration by Jussi Kangasharju and Mikko Pervilä. The course was called Peer-to-Peer Networks at the time and some exercises presented here are very close to some of the exercises presented on that course.
+
+While the exercises presented in this package have drawn inspiration from various sources the written form of the exercises is solely the fault of the author. Thus the author is to blame for any mistakes and inclarities that are present.
 
 The packages contain 12 assignments and 3 turbo challenges. The packages have been edited since the course to remove course specific details. The following topics are covered.
 
